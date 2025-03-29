@@ -18,10 +18,16 @@ mongoose.connect(process.env.MONGO_URI, {
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.error('MongoDB connection error:', err));
 
+const allowedOrigins = [
+  'http://localhost:3000',  // Development
+  'https://monkey-type-gqgm209s2-chaitanyas-projects-19d61ffd.vercel.app' // Production (Vercel)
+];
+
 // Middleware
 app.use(helmet());
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000'
+  origin: allowedOrigins,
+  credentials: true,  
 }));
 app.use(express.json());
 
