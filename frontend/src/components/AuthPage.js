@@ -9,7 +9,7 @@ const AuthPage = ({ type, setUser }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(`/auth/${type}`, form);
+      const { data } = await axios.post(`/api/auth/${type}`, form);
       console.log("Received token:", data.token);
       localStorage.setItem('token', data.token);
       console.log("Token in localStorage:", localStorage.getItem("token"));

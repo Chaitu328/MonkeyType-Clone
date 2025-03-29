@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:5000/api';
+axios.defaults.baseURL = 'https://monkeytype-c21i.onrender.com';
 
 const DashboardPage = () => {
   const [sessions, setSessions] = useState([]);
@@ -13,7 +13,7 @@ const DashboardPage = () => {
   useEffect(() => {
     const fetchSessions = async () => {
       try {
-        const { data } = await axios.get('/sessions', {
+        const { data } = await axios.get('/api/sessions', {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
         });
         console.log("Fetched sessions:", data.sessions);
@@ -28,7 +28,7 @@ const DashboardPage = () => {
   // Fetch analysis data for a given session id.
   const fetchAnalysis = async (sessionId) => {
     try {
-      const { data } = await axios.get(`/analysis/${sessionId}?t=${Date.now()}`, {
+      const { data } = await axios.get(`/api/analysis/${sessionId}?t=${Date.now()}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
       });
       console.log("Fetched analysis for session", sessionId, ":", data);

@@ -8,8 +8,8 @@ import DashboardPage from './components/DashboardPage';
 import './App.css';
 
 // Axios configuration with Bearer token interceptor.
-axios.defaults.baseURL = 'http://localhost:5000/api';
-
+// axios.defaults.baseURL = 'http://localhost:5000/api';
+axios.defaults.baseURL = 'https://monkeytype-c21i.onrender.com';
 const App = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -18,7 +18,7 @@ const App = () => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const { data } = await axios.get('/auth/user');
+        const { data } = await axios.get('/api/auth/user');
         setUser(data);
       } catch (err) {
         setUser(null);

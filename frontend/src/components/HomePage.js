@@ -169,7 +169,7 @@ const HomePage = ({ user }) => {
   
     if (user) {
       try {
-        const response = await axios.post('http://localhost:5000/api/sessions', sessionData, {
+        const response = await axios.post('https://monkeytype-c21i.onrender.com/api/sessions', sessionData, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });
         console.log("POST successful, response:", response.data);
