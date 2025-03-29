@@ -166,10 +166,10 @@ const HomePage = ({ user }) => {
     };
   
     console.log("Calculated session data:", sessionData);
-  
+    axios.defaults.baseURL = 'https://monkeytype-c21i.onrender.com';
     if (user) {
       try {
-        const response = await axios.post('https://monkeytype-c21i.onrender.com/api/sessions', sessionData, {
+        const response = await axios.post('/api/sessions', sessionData, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });
         console.log("POST successful, response:", response.data);
